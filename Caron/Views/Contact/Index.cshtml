@@ -1,0 +1,33 @@
+﻿@model Caron.DAL.ViewModels.Contact.ContactViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Contact us</h2>
+<p class="lead">
+    If you have availability enquiries or any other questions about the property, don't hesitate to contact us through the site.
+</p>
+
+<div class="container">
+@using (Html.BeginForm("CreateContact", "Contact", FormMethod.Post))
+{
+    <div class="form-group">
+        <label form="Email">E-mail</label>
+        <input class="form-control" type="text" id="Email" name="Email" placeholder="Enter your e-mail address here" />
+    </div>
+
+    <div class="form-group">
+        <label for="Subject">Subject</label>
+        <select placebolder="Select a subject..." class="form-control"></select>
+    </div>
+
+    <div class="form-group">
+        <label for="Message">Message</label>
+        <textarea id="Message" class="form-control" name="Message" placeholder="Enter your message here max(500 characters)"></textarea>
+    </div>
+
+    <div class="form-group">
+        <input class="btn btn-success form-control" value="Send" type="submit" />
+    </div>
+}
+</div>

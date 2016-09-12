@@ -1,0 +1,40 @@
+﻿@model Caron.DAL.ViewModels.Home.HomeIndexViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h2>Holiday apartment in the French Alps</h2>
+    <p class="lead">
+        A wonderful holiday apartment in the Three Valleys ski resort with direct access to the slopes.
+    </p>
+
+    <a href="http://asp.net" class="btn btn-primary btn-lg">Check Availability &raquo;</a>
+</div>
+
+<button class="btn btn-success" data-toggle="modal" data-target="#modal" data-action="@Url.Action("CreateSection", "Home")">
+    Create
+</button>
+
+@foreach (var descriptionSection in Model.DescriptionSections)
+{
+    <div class="container descriptionSection">
+        <h2>@descriptionSection.Title</h2>
+        <p>@descriptionSection.Description</p>
+        <div class="btn-group pull-right">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#modal"
+                    data-action="@Url.Action("UpdateDescriptionSection", "Home", new { descriptionSectionId = descriptionSection.DescriptionSectionId })">
+                Update
+            </button>
+            <a class="btn btn-danger deleteButton"
+               data-action="@Url.Action("DeleteDescriptionSection", "Home")" data-id="@descriptionSection.DescriptionSectionId">
+                Delete
+            </a>
+
+        </div>
+    </div>
+}
+
+@section scripts{
+    @Scripts.Render("~/Scripts/Caron/Home/Index.js")
+}
