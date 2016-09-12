@@ -1,0 +1,11 @@
+﻿@model Caron.DAL.ViewModels.Home.DescriptionSectionViewModel
+
+<div class="modal-content">
+    @using(Html.BeginForm("CreateSection", "Home", "POST"))
+    {
+        @Html.Partial("_DescriptionSectionPopup")
+    }
+
+</div>
+
+
